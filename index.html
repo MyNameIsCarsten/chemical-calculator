@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
+    <script type="text/javascript" src="/calculate.js"></script>
+    
+</head>
+<body>
+    
+    <div class="wrapper">
+        <div class="tabs">
+          <div class="tab">
+            <input type="radio" name="css-tabs" id="tab-1" checked class="tab-switch">
+            <label for="tab-1" class="tab-label">Molarities</label>
+            <div class="tab-content">
+                <div id="container">
+                    <h2>The formula for calculating molarities</h2>
+                    <p>Mass (g) = Concentration (mol/L) × Volume (L) × Molecular Weight (g/mol)</p>
+                    <p class="errors"></p>
+                    <form class="calculator-form">
+                        <div class="">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th style="width: 157px">Mass</th>
+                                        <th style="width: 21px">&nbsp;</th>
+                                        <th style="width: 151px">Concentration</th>
+                                        <th style="width: 20px">&nbsp;</th>
+                                        <th style="width: 151px">Volume</th>
+                                        <th style="width: 20px">&nbsp;</th>
+                                        <th style="width: 135px">Molecular Weight</th>
+                                        <th style="width: 20px">&nbsp;</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input id="mass" type="text" class="nonempty">
+                                            <select id="mass-unit">
+                                                <option value="15">kg</option>
+                                                <option value="12">g</option>
+                                                <option selected="selected" value="9">mg</option>
+                                                <option value="6">μg</option>
+                                                <option value="3">ng</option>
+                                                <option value="0">pg</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <span>=</span>
+                                        </td>
+                                        <td>
+                                            <input id="concentration" type="text" class="nonempty">
+                                                <select id="concentration-unit">
+                                                <option value="12">M</option>
+                                                <option selected="selected" value="9">mM</option>
+                                                <option value="6">μM</option>
+                                                <option value="3">nM</option>
+                                                <option value="0">pM</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <span>×</span>
+                                        </td>
+                                        <td>
+                                        <input id="volume" type="text" class="nonempty">
+                                        <select id="volume-unit">
+                                            <option value="6">L</option>
+                                            <option selected="selected" value="3">mL</option>
+                                            <option value="0">μL</option>
+                                        </select>
+                                        </td>
+                                        <td>
+                                            <span>×</span>
+                                        </td>
+                                        <td>
+                                            <input id="mw" style="width: 120px" type="text" class="nonempty">
+                                        </td>
+                                        <td>
+                                            <span>g / mol</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="errors">
+                                        <td id="mass-error"></td>
+                                        <td></td>
+                                        <td id="concentration-error"></td>
+                                        <td></td>
+                                        <td id="volume-error"></td>
+                                        <td></td>
+                                        <td id="mw-error"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <ul class="calculator-btn">
+                            <li><input id="molarityCalculatorBtn" type="button" value="Calculate" onclick="calculateM()"></li>
+                            <li><input type="reset" value="Clear" onclick="clearM()"></li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+          </div>
+          <div class="tab">
+            <input type="radio" name="css-tabs" id="tab-2" class="tab-switch">
+            <label for="tab-2" class="tab-label">Dilution</label>
+            <div class="tab-content">
+                <div class="cpd-cal-div dis-hide" style="display: block;">
+                    <div class="calculator-tit">
+                        <h2>The dilution calculator equation</h2></div>
+                        <div class="calculator-brief">
+                            <p>Concentration <sub>(stock solution)</sub> × Volume <sub>(stock solution)</sub> = Concentration <sub>(target solution)</sub> × Volume <sub>(target solution)</sub></p>
+                            <p>This equation is often abbreviated as: <span>C<sub>1</sub>V<sub>1</sub> = C<sub>2</sub>V<sub>2</sub></span></p>
+                            <p class="errors"></p>
+                        </div>
+                        <form class="calculator-form">
+                            <div class="">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <th style="width:146px">Concentration <sub>(start)</sub></th>
+                                            <th style="width:19px"><span>×</span></th>
+                                            <th style="width:147px">Volume <sub>(start)</sub></th>
+                                            <th style="width:18px"><span>=</span></th>
+                                            <th style="width:145px">Concentration <sub>(final)</sub></th>
+                                            <th style="width:20px"><span>×</span></th>
+                                            <th style="width: 145px">Volume <sub>(final)</sub></th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input id="c1" type="text" class="nonempty">
+                                                <select id="c1-unit">
+                                                    <option value="12">M</option>
+                                                    <option selected="selected" value="9">mM</option>
+                                                    <option value="6">μM</option>
+                                                    <option value="3">nM</option>
+                                                    <option value="0">pM</option>
+                                                </select>
+                                            </td>
+                                            <td><span>×</span></td>
+                                            <td>
+                                                <input id="v1" type="text" class="nonempty">
+                                                <select id="v1-unit">
+                                                    <option value="6">L</option>
+                                                    <option selected="selected" value="3">mL</option>
+                                                    <option value="0">μL</option>
+                                                </select>
+                                            </td>
+                                            <td><span>=</span></td>
+                                            <td>
+                                                <input id="c2" type="text" class="nonempty">
+                                                <select id="c2-unit">
+                                                    <option value="12">M</option>
+                                                    <option selected="selected" value="9">mM</option>
+                                                    <option value="6">μM</option>
+                                                    <option value="3">nM</option>
+                                                    <option value="0">pM</option>
+                                                </select>
+                                            </td>
+                                            <td><span>×</span></td>
+                                            <td>
+                                                <input id="v2" type="text" class="nonempty">
+                                                <select id="v2-unit">
+                                                    <option value="6">L</option>
+                                                    <option selected="selected" value="3">mL</option>
+                                                    <option value="0">μL</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>C1</th>
+                                            <th>&nbsp;</th>
+                                            <th>V1</th>
+                                            <th>&nbsp;</th>
+                                            <th>C2</th>
+                                            <th>&nbsp;</th>
+                                            <th>V2</th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <ul class="calculator-btn">
+                                <li><input id="dilutionCalculatorBtn" type="button" value="Calculate" onclick="calculateD()"></li>
+                                <li><input type="reset" value="Clear" onclick="clearD()"></li>
+                            </ul>
+                        </form>
+                    <div id="errorInfo" style="color:red"></div>
+                
+                </div>
+            </div>
+          </div>
+          <div class="tab">
+            <input type="radio" name="css-tabs" id="tab-3" class="tab-switch">
+            <label for="tab-3" class="tab-label">Concentration</label>
+            <div class="tab-content">
+                <div class="cpd-cal-div dis-hide" style="display: block;">
+                    <div class="calculator-tit">
+                        <h2>The concentration calculator equation</h2></div>
+                        <div class="calculator-brief">
+                            <p>Concentration  = mass × Volume </p>
+                            <p class="errors-conc"></p>
+                        </div>
+                        <form class="calculator-form">
+                            <div class="">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <th style="width:160px">Concentration</th>
+                                            <th style="width:18px"><span>=</span></th>
+                                            <th style="width:145px">Mass</th>
+                                            <th style="width:20px"><span>/</span></th>
+                                            <th style="width: 145px">Volume</th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input id="con" type="text" class="nonempty">
+                                                <span id="con-unit">g / L</span>
+                                            </td>
+                                            <td><span>=</span></td>
+                                            <td>
+                                                <input id="ma" type="text" class="nonempty">
+                                                <select id="ma-unit">
+                                                    <option value="15">kg</option>
+                                                    <option selected="selected" value="12">g</option>
+                                                    <option value="9">mg</option>
+                                                    <option value="6">µg</option>
+                                                    <option value="3">ng</option>
+                                                    <option value="0">pg</option>
+                                                </select>
+                                            </td>
+                                            <td><span>/</span></td>
+                                            <td>
+                                                <input id="vol" type="text" class="nonempty">
+                                                <select id="vol-unit">
+                                                    <option selected="selected" value="6">L</option>
+                                                    <option value="3">mL</option>
+                                                    <option value="0">μL</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <ul class="calculator-btn">
+                                <li><input id="dilutionCalculatorBtn" type="button" value="Calculate" onclick="calculateC()"></li>
+                                <li><input type="reset" value="Clear" onclick="clearC()"></li>
+                            </ul>
+                        </form>
+                    <div id="errorInfo" style="color:red"></div>
+                
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</body>
+</html>

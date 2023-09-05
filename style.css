@@ -1,0 +1,172 @@
+/* Site Stylesheet
+  1. Global Styles
+  2. Typography Styles
+  3. Structure Styles
+  4. Module Styles
+  5. Component Styles
+  6. Page Styles
+======================================== */
+
+/* 1. Global Styles
+======================================== */
+
+:root {
+    --primary: #13e47c;
+    --primary_hover: #0fbe67;
+    --overlay: rgba(0,0,0,0.7);
+    --text_col: black;
+    --link_hover: #6009b0;
+    --banner_background: #e8fafb;
+}
+
+body {
+    /* Center */
+    margin: 0;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background-color: #8ecae6;
+    font-family: Arial, -apple-system, sans-serif;
+    color: #023047;
+}
+
+li > input {
+    background-color: #219ebc;
+    border-radius: 3px;
+    border-style: none;
+    font-weight: bold;
+    margin: 5px;
+    padding: 5px;
+}
+
+li > input:hover {
+    background-color: #ffb703;
+    cursor: pointer;
+}
+
+
+.calculator-form {
+    display: flex;
+}
+
+.calculator-form input[type='text'] {
+    width: 82px;   
+}
+
+ul {
+    list-style: none;
+}
+
+.errors, .errors-conc {
+    color: #fb8500;
+}
+
+
+
+.wrapper {
+    max-width: 55rem;
+    width: 100%;
+    margin: 0 auto;
+    
+  }
+  .tabs {
+    position: relative;
+    margin: 3rem 0;
+    background: #219ebc;
+    height: 23rem;
+  }
+  .tabs::before,
+  .tabs::after {
+    content: "";
+    display: table;
+  }
+  .tabs::after {
+    clear: both;
+  }
+  .tab {
+    float: left;
+  }
+  .tab-switch {
+    display: none;
+  }
+  .tab-label {
+    position: relative;
+    display: block;
+    line-height: 2.75em;
+    height: 3em;
+    padding: 0 1.618em;
+    background: #ffb703;
+    border-right: 0.125rem solid #fb8500;
+    color: #fff;
+    cursor: pointer;
+    top: 0;
+    transition: all 0.25s;
+  }
+  .tab-label:hover {
+    top: -0.25rem;
+    transition: top 0.25s;
+  }
+  .tab-content {
+    height: 12rem;
+    position: absolute;
+    z-index: 1;
+    top: 2.75em;
+    left: 0;
+    padding: 1.618rem;
+    background: #fff;
+    color: #2c3e50;
+    border-bottom: 0.25rem solid #bdc3c7;
+    opacity: 0;
+    transition: all 0.35s;
+    padding-bottom: 100px;
+    width: 51.8rem;
+  }
+  .tab-switch:checked + .tab-label {
+    background: #fff;
+    color: #2c3e50;
+    border-bottom: 0;
+    border-right: 0.125rem solid #fff;
+    transition: all 0.35s;
+    z-index: 1;
+    top: -0.0625rem;
+  }
+  .tab-switch:checked + label + .tab-content {
+    z-index: 2;
+    opacity: 1;
+  transition: all 0.35s;
+}
+
+.calculator-btn li input {
+    width: 90px;
+}
+
+#alt-unit {
+    text-align: right;
+    color: grey;
+}
+
+/* 2. Typography Styles
+======================================== */
+
+/* 3. Structure Styles
+======================================== */
+
+
+/* 4. Modules Styles
+======================================== */
+
+/* Site Navigation */
+
+/* Site Footer */
+
+/* 5. Component Styles
+======================================== */
+
+/* 6. Page Styles
+======================================== */
+
+
+
+@media only screen and (max-width: 700px) {
+
+  }
